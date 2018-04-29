@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 import testImg from './img/test.jpg';
+import store from './store';
 import './App.css';
 
 class App extends Component {
@@ -7,6 +9,7 @@ class App extends Component {
     rect: []
   };
   componentDidMount() {
+    /*
     const tracker = new window.tracking.ObjectTracker(['face']);
     tracker.setInitialScale(4);
     tracker.setStepSize(2);
@@ -24,33 +27,36 @@ class App extends Component {
         });
       };
     }
+		*/
   }
   render() {
     const { rect } = this.state;
     return (
-      <div className="App">
-        <img
-          ref={img => (this.img = img)}
-          id="img-to-track"
-          src={testImg}
-          alt="test"
-        />
-        {rect.map((track, i) => {
-          return (
-            <div
-              key={i}
-              style={{
-                width: track.width,
-                height: track.height,
-                top: track.y,
-                left: track.x,
-                position: 'absolute',
-                border: '1px solid red'
-              }}
-            />
-          );
-        })}
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <img
+            ref={img => (this.img = img)}
+            id="img-to-track"
+            src={testImg}
+            alt="test"
+          />
+          {rect.map((track, i) => {
+            return (
+              <div
+                key={i}
+                style={{
+                  width: track.width,
+                  height: track.height,
+                  top: track.y,
+                  left: track.x,
+                  position: 'absolute',
+                  border: '1px solid red'
+                }}
+              />
+            );
+          })}
+        </div>
+      </Provider>
     );
   }
 }

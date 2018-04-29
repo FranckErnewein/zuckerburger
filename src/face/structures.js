@@ -1,7 +1,5 @@
 import t from 'tcomb';
 
-console.log(t.Number);
-
 export const Face = t.struct(
   {
     id: t.String,
@@ -9,7 +7,7 @@ export const Face = t.struct(
     y: t.Number,
     rotate: t.Number,
     scale: t.Number,
-    type: t.String
+    type: t.enums.of('zuckerberg')
   },
   'Face'
 );
