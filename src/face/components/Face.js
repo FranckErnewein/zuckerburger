@@ -15,12 +15,17 @@ function Face(props) {
     position: 'absolute',
     top: 0,
     left: 0,
-    transform: `translateX(${x}px) translateY(${y}px) rotate(${rotate}deg) scale(${scale})`
+    transform: `translateX(${x}px) translateY(${y}px) scale(${scale})`
   };
+  const imgStyle ={
+    transform: `rotate(${rotate}deg`
+  }
   return (
-    <div className="Face" style={style}>
-      <img src={imgs[type]} alt={type} />
-      <input type='number' min='0' max='360' value={rotate} onChange={rotateFace}/>
+    <div className='container'>
+      <div className="Face" style={style}>
+        <img src={imgs[type]} alt={type} style={imgStyle}/>
+        <input type='number' min='0' max='360' value={rotate} onChange={rotateFace}/>
+      </div>
     </div>
   );
 }
