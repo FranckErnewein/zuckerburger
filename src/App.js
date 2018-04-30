@@ -1,8 +1,12 @@
+import './App.css';
+
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import testImg from './img/test.jpg';
+
 import store from './store';
-import './App.css';
+import FacesLayer from './face/components/FacesLayer';
+import FaceActionBar from './face/components/FaceActionBar';
+// import testImg from './img/test.jpg';
 
 class App extends Component {
   state = {
@@ -30,31 +34,12 @@ class App extends Component {
 		*/
   }
   render() {
-    const { rect } = this.state;
+    // const { rect } = this.state;
     return (
       <Provider store={store}>
         <div className="App">
-          <img
-            ref={img => (this.img = img)}
-            id="img-to-track"
-            src={testImg}
-            alt="test"
-          />
-          {rect.map((track, i) => {
-            return (
-              <div
-                key={i}
-                style={{
-                  width: track.width,
-                  height: track.height,
-                  top: track.y,
-                  left: track.x,
-                  position: 'absolute',
-                  border: '1px solid red'
-                }}
-              />
-            );
-          })}
+          <FacesLayer />
+          <FaceActionBar />
         </div>
       </Provider>
     );

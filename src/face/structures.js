@@ -7,7 +7,7 @@ export const Face = t.struct(
     y: t.Number,
     rotate: t.Number,
     scale: t.Number,
-    type: t.enums.of('zuckerberg')
+    type: t.enums.of(['zuckerberg'])
   },
   'Face'
 );
